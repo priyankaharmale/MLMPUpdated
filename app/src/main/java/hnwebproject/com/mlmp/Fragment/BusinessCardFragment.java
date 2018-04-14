@@ -1,25 +1,25 @@
-package hnwebproject.com.mlmp.Activity;
+package hnwebproject.com.mlmp.Fragment;
 
-import android.Manifest;
+
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -37,6 +37,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
+import com.facebook.FacebookSdk;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,6 +45,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import hnwebproject.com.mlmp.Activity.VideoViewActivity;
+import hnwebproject.com.mlmp.Activity.WebviewActivity;
 import hnwebproject.com.mlmp.Contants.AppConstant;
 import hnwebproject.com.mlmp.R;
 import hnwebproject.com.mlmp.Utility.AlertUtility;
@@ -51,14 +54,16 @@ import hnwebproject.com.mlmp.Utility.AppUtils;
 import hnwebproject.com.mlmp.Utility.SharedPreference;
 import hnwebproject.com.mlmp.Utility.Utils;
 
+import static com.facebook.FacebookSdk.getApplicationContext;
 
-public class BusinessCardActivity extends AppCompatActivity implements View.OnClickListener {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class BusinessCardFragment extends Fragment implements View.OnClickListener {
 
-
-    String TAG
-            = BusinessCardActivity.class.getSimpleName();
+    String TAG = BusinessCardFragment.class.getSimpleName();
     ImageView iv_view_profile_pic, iv_video;
-    Button btn_phone_number, btn_email, btn_invite_to_MY_DBC,btn_sharepsot;
+    Button btn_phone_number, btn_email, btn_invite_to_MY_DBC, btn_sharepsot;
     TextView tv_name, tv_title, tv_mail_id, tv_company3, tv_company2, tv_company1, tv_education;
     ImageButton ib_you_tube, ib_lin, ib_fb, ib_insta, ib_twitter;
     Drawable drawable;
@@ -69,67 +74,58 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
 
     String youtube_link, linkedin_link, facebook_link, instagram_link, twitter_link;
     private String video_url;
-    private ImageButton ib_edit;
-    private String website;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_business_card);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-
-        ib_edit = (ImageButton) toolbar.findViewById(R.id.ib_edit);
-        ib_edit.setOnClickListener(this);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbar.setNavigationIcon(R.drawable.back);
-
-
-        getsaveData();
-
-        initView();
-        //btn_sharepsot.setVisibility(View.GONE);
-        if (Utils.isNetworkAvailable(BusinessCardActivity.this)) {
-            getProfileData(user_id);
-        } else {
-            Utils.myToast1(BusinessCardActivity.this);
-        }
-
-
+    public BusinessCardFragment() {
+        // Required empty public constructor
     }
 
 
-    private void initView() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        toggle = new ActionBarDrawerToggle(BusinessCardActivity.this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        FacebookSdk.sdkInitialize(getActivity());
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_business_card, container, false);
+
+        getsaveData();
+        initView(view);
+        if (Utils.isNetworkAvailable(getActivity())) {
+            getProfileData(user_id);
+        } else {
+            Utils.myToast1(getActivity());
+        }
+        return view;
+    }
+
+    private void initView(View view) {
+        DrawerLayout drawer = (DrawerLayout) view.findViewById(R.id.drawer_layout);
+        toggle = new ActionBarDrawerToggle(getActivity(), drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
 
-        drawable = ContextCompat.getDrawable(BusinessCardActivity.this, R.drawable.sllider_menu_avtar);
-        tv_name = (TextView) findViewById(R.id.tv_name);
-        tv_title = (TextView) findViewById(R.id.tv_title);
-        tv_website = (TextView) findViewById(R.id.tv_website);
-        tv_website.setOnClickListener(this);
+        showBackButton();
+
+        drawable = ContextCompat.getDrawable(getActivity(), R.drawable.sllider_menu_avtar);
+        tv_name = (TextView) view.findViewById(R.id.tv_name);
+        tv_title = (TextView) view.findViewById(R.id.tv_title);
+        tv_website = (TextView) view.findViewById(R.id.tv_website);
         tv_website.setPaintFlags(tv_website.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        tv_company3 = (TextView) findViewById(R.id.tv_company3);
-        tv_company2 = (TextView) findViewById(R.id.tv_company2);
-        tv_company1 = (TextView) findViewById(R.id.tv_company1);
-        tv_education = (TextView) findViewById(R.id.tv_education);
-        iv_video = (ImageView) findViewById(R.id.iv_video);
+        tv_company3 = (TextView) view.findViewById(R.id.tv_company3);
+        tv_company2 = (TextView) view.findViewById(R.id.tv_company2);
+        tv_company1 = (TextView) view.findViewById(R.id.tv_company1);
+        tv_education = (TextView) view.findViewById(R.id.tv_education);
+        iv_video = (ImageView) view.findViewById(R.id.iv_video);
         iv_video.setOnClickListener(this);
-        iv_view_profile_pic = (ImageView) findViewById(R.id.iv_view_profile_pic);
-        btn_phone_number = (Button) findViewById(R.id.btn_phone_number);
-        btn_email = (Button) findViewById(R.id.btn_email);
-        btn_invite_to_MY_DBC = (Button) findViewById(R.id.btn_invite_to_MY_DBC);
-        ib_you_tube = (ImageButton) findViewById(R.id.ib_you_tube);
-        ib_lin = (ImageButton) findViewById(R.id.ib_lin);
-        ib_fb = (ImageButton) findViewById(R.id.ib_fb);
-        ib_twitter = (ImageButton) findViewById(R.id.ib_twitter);
-        ib_insta = (ImageButton) findViewById(R.id.ib_insta);
-        btn_sharepsot = (Button) findViewById(R.id.btn_sharepsot);
+        iv_view_profile_pic = (ImageView) view.findViewById(R.id.iv_view_profile_pic);
+        btn_phone_number = (Button) view.findViewById(R.id.btn_phone_number);
+        btn_email = (Button) view.findViewById(R.id.btn_email);
+        btn_invite_to_MY_DBC = (Button) view.findViewById(R.id.btn_invite_to_MY_DBC);
+        btn_sharepsot = (Button) view.findViewById(R.id.btn_sharepsot);
+        ib_you_tube = (ImageButton) view.findViewById(R.id.ib_you_tube);
+        ib_lin = (ImageButton) view.findViewById(R.id.ib_lin);
+        ib_fb = (ImageButton) view.findViewById(R.id.ib_fb);
+        ib_twitter = (ImageButton) view.findViewById(R.id.ib_twitter);
+        ib_insta = (ImageButton) view.findViewById(R.id.ib_insta);
 
         ib_you_tube.setOnClickListener(this);
         ib_lin.setOnClickListener(this);
@@ -146,14 +142,6 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-
-            case  R.id.tv_website:
-
-                Intent intentw = new Intent(BusinessCardActivity.this, WebviewActivity.class);
-                intentw.putExtra("url", website);
-                startActivity(intentw);
-
-                break;
             case R.id.btn_phone_number:
 
                 call(btn_phone_number.getText().toString());
@@ -172,63 +160,57 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
                 break;
 
             case R.id.ib_you_tube:
-                // Toast.makeText(BusinessCardActivity.this, "ib_you_tube", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "ib_you_tube", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(BusinessCardActivity.this, WebviewActivity.class);
+                Intent intent = new Intent(getActivity(), WebviewActivity.class);
                 intent.putExtra("url", youtube_link);
+
                 startActivity(intent);
 
                 break;
 
             case R.id.ib_lin:
-                // Toast.makeText(BusinessCardActivity.this, "ib_lin", Toast.LENGTH_SHORT).show();
-                Intent intent1 = new Intent(BusinessCardActivity.this, WebviewActivity.class);
+                Toast.makeText(getActivity(), "ib_lin", Toast.LENGTH_SHORT).show();
+                Intent intent1 = new Intent(getActivity(), WebviewActivity.class);
                 intent1.putExtra("url", linkedin_link);
                 startActivity(intent1);
 
                 break;
             case R.id.ib_fb:
-                Intent intent2 = new Intent(BusinessCardActivity.this, WebviewActivity.class);
+                Intent intent2 = new Intent(getActivity(), WebviewActivity.class);
                 intent2.putExtra("url", facebook_link);
                 startActivity(intent2);
                 break;
 
             case R.id.ib_insta:
-                Intent intent3 = new Intent(BusinessCardActivity.this, WebviewActivity.class);
+                Intent intent3 = new Intent(getActivity(), WebviewActivity.class);
                 intent3.putExtra("url", instagram_link);
                 startActivity(intent3);
                 break;
 
             case R.id.ib_twitter:
-                Intent intent4 = new Intent(BusinessCardActivity.this, WebviewActivity.class);
+                Intent intent4 = new Intent(getActivity(), WebviewActivity.class);
                 intent4.putExtra("url", twitter_link);
                 startActivity(intent4);
                 break;
 
             case R.id.iv_video:
 
-                Intent myIntent = new Intent(BusinessCardActivity.this, VideoViewActivity.class);
+                Intent myIntent = new Intent(getActivity(), VideoViewActivity.class);
                 // myIntent.putExtra("VIDEOurl", video_url);
                 myIntent.putExtra("VIDEOurl", video_url);
                 startActivity(myIntent);
 
                 break;
 
-            case R.id.ib_edit:
 
-               // Toast.makeText(this, "pressed", Toast.LENGTH_SHORT).show();
-                Intent i_login = new Intent(BusinessCardActivity.this, ViewPRofileActivity.class);
-                startActivity(i_login);
-                break;
-            case R.id.btn_sharepsot:
-                Intent sharepsot = new Intent(BusinessCardActivity.this, SharePostActivity.class);
-                startActivity(sharepsot);
-                break;
+
+
         }
     }
 
     private void sendEmail(String email) {
-        Toast.makeText(BusinessCardActivity.this, "send mail", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "send mail", Toast.LENGTH_SHORT).show();
 
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
                 "mailto", " ", null));
@@ -240,21 +222,11 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
     private void call(CharSequence text) {
         Intent callIntent = new Intent(Intent.ACTION_CALL);
         callIntent.setData(Uri.parse("tel:" + text));
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        startActivity(callIntent);
+        this.startActivity(callIntent);
     }
 
     private void getProfileData(final String user_id) {
-        final ProgressDialog myDialog = Utils.DialogsUtils.showProgressDialog(BusinessCardActivity.this, getString(R.string.processing));
+        final ProgressDialog myDialog = Utils.DialogsUtils.showProgressDialog(getActivity(), getString(R.string.processing));
         StringRequest stringRequest = new StringRequest(Request.Method.POST, AppConstant.API_VIEW_PROFILE,
                 new Response.Listener<String>() {
 
@@ -263,8 +235,7 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
                     public void onResponse(String response) {
                         myDialog.dismiss();
 
-
-                        Log.d(TAG,"res_ViewPRofile"+response);
+                        Log.d(TAG, "res_ViewPRofile" + response);
 
                         try {
                             JSONObject j = new JSONObject(response);
@@ -285,12 +256,12 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
                                 String phone = jsonObject.getString("phone");
                                 String head_line = jsonObject.getString("head_line");
                                 String education = jsonObject.getString("education");
-                                 youtube_link = jsonObject.getString("youtube_link");
-                                 linkedin_link = jsonObject.getString("linkedin_link");
-                                 facebook_link = jsonObject.getString("facebook_link");
-                                 instagram_link = jsonObject.getString("instagram_link");
-                                 twitter_link = jsonObject.getString("twitter_link");
-                                 website = jsonObject.getString("website");
+                                String youtube_link = jsonObject.getString("youtube_link");
+                                String linkedin_link = jsonObject.getString("linkedin_link");
+                                String facebook_link = jsonObject.getString("facebook_link");
+                                String instagram_link = jsonObject.getString("instagram_link");
+                                String twitter_link = jsonObject.getString("twitter_link");
+                                String website = jsonObject.getString("website");
                                 String company1 = jsonObject.getString("company1");
                                 String company2 = jsonObject.getString("company2");
                                 String company3 = jsonObject.getString("company3");
@@ -306,7 +277,7 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
                                 SharedPreference.profileSaveAfterupdate(getApplicationContext(), full_name, profile_pic, email);
                             } else {
                                 message = j.getString("message");
-                                AlertDialog.Builder builder = new AlertDialog.Builder(BusinessCardActivity.this);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                                 builder.setMessage(message)
                                         .setCancelable(false)
                                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -334,8 +305,8 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
 
                         //   Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
 
-                        String reason = AppUtils.getVolleyError(BusinessCardActivity.this, error);
-                        AlertUtility.showAlert(BusinessCardActivity.this, reason);
+                        String reason = AppUtils.getVolleyError(getActivity(), error);
+                        AlertUtility.showAlert(getActivity(), reason);
                         System.out.println("jsonexeption" + error.toString());
 
                     }
@@ -363,7 +334,7 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         stringRequest.setShouldCache(false);
-        RequestQueue requestQueue = Volley.newRequestQueue(BusinessCardActivity.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
 
     }
@@ -375,16 +346,16 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
         tv_education.setText(education);
         btn_phone_number.setText(phone);
 
-        if(company3.isEmpty() ){
+        if (company3.isEmpty()) {
             tv_company3.setVisibility(View.GONE);
-        }else {
+        } else {
             tv_company3.setText(company3);
         }
 
-        if(company2.isEmpty()){
+        if (company2.isEmpty()) {
             tv_company2.setVisibility(View.GONE);
-        }else {
-            tv_company2.setText(company2);
+        } else {
+            tv_company2.setText(company3);
         }
 
         // tv_company2.setText(company2);
@@ -416,18 +387,14 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
     }
 
 
-
-
     private void getsaveData() {
-        final SharedPreferences settings = getSharedPreferences("AOP_PREFS", Context.MODE_PRIVATE); //1
+        final SharedPreferences settings = getActivity().getSharedPreferences("AOP_PREFS", Context.MODE_PRIVATE); //1
         user_id = (settings.getString("user_id", ""));
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
+    public void showBackButton() {
+        if (getActivity() instanceof AppCompatActivity) {
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
-
-
 }

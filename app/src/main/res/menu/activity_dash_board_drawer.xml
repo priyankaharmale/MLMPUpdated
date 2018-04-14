@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_digital_business"
+            android:title="@string/digital_business_card" />
+        <item
+            android:id="@+id/nav_contacts"
+            android:title="@string/contacts" />
+        <item
+            android:id="@+id/nav_training_centre"
+            android:title="@string/training_centre" />
+        <item
+            android:id="@+id/nav_calender_task"
+            android:title="@string/calender_task" />
+        <item
+            android:id="@+id/nav_product_service"
+            android:title="@string/product_service" />
+
+        <item
+            android:id="@+id/nav_donation"
+            android:title="@string/donation" />
+        <item
+            android:id="@+id/nav_logout"
+            android:title="@string/logout" />
+
+    </group>
+
+</menu>

@@ -1,0 +1,249 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="hnwebproject.com.mlmp.Activity.Fragment.BusinessCardFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimens_200dp">
+
+            <ImageView
+                android:id="@+id/iv_view_profile_pic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/sllider_menu_avtar" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <Button
+                    android:id="@+id/btn_phone_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimens_10dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/round_corner_grey"
+                    android:paddingLeft="@dimen/dimens_40dp"
+                    android:paddingRight="@dimen/dimens_40dp"
+                    android:text="408-529-3356"
+                    android:textColor="@color/colorWhite1" />
+
+                <Button
+                    android:id="@+id/btn_email"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimens_10dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/round_corner_grey"
+                    android:paddingLeft="@dimen/dimens_40dp"
+                    android:paddingRight="@dimen/dimens_40dp"
+                    android:text="Email Me"
+                    android:textColor="@color/colorWhite1" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dimens_20dp"
+                android:gravity="center"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="DANIEL PUDER"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_25sp" />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_name"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dimens_20dp"
+                    android:gravity="center"
+                    android:text="Social Entrepreneur "
+                    android:textColor="@color/color_grey"
+                    android:textSize="@dimen/text_size_18sp" />
+
+                <Button
+                    android:id="@+id/btn_invite_to_MY_DBC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimens_10dp"
+                    android:background="@drawable/round_corner_grey"
+                    android:paddingLeft="@dimen/dimens_40dp"
+                    android:paddingRight="@dimen/dimens_40dp"
+                    android:text="INVITE to My DBC"
+                    android:textColor="@color/colorWhite1" />
+
+                <TextView
+                    android:id="@+id/tv_website"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="www.danielpuder.com"
+                    android:textColor="@color/color_mail_id"
+                    android:textSize="@dimen/text_size_18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_reach_me"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_10dp"
+                    android:gravity="center"
+                    android:text="-Reach me Online-"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/text_size_18sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_10dp"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/ib_you_tube"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dimens_5dp"
+                        android:layout_marginStart="@dimen/dimens_5dp"
+                        android:background="@null"
+                        android:src="@drawable/youtube" />
+
+                    <ImageButton
+                        android:id="@+id/ib_lin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dimens_5dp"
+                        android:layout_marginStart="@dimen/dimens_5dp"
+                        android:background="@null"
+                        android:src="@drawable/linkedin" />
+
+                    <ImageButton
+                        android:id="@+id/ib_fb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dimens_5dp"
+                        android:layout_marginStart="@dimen/dimens_5dp"
+                        android:background="@null"
+                        android:src="@drawable/facebook" />
+
+                    <ImageButton
+                        android:id="@+id/ib_insta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dimens_5dp"
+                        android:layout_marginStart="@dimen/dimens_5dp"
+                        android:background="@null"
+                        android:src="@drawable/instagram" />
+
+                    <ImageButton
+                        android:id="@+id/ib_twitter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dimens_5dp"
+                        android:layout_marginStart="@dimen/dimens_5dp"
+                        android:background="@null"
+                        android:src="@drawable/twitter" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/tv_company1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_10dp"
+                    android:gravity="center"
+                    android:text="@string/founderAndCEOTransformationalTech"
+                    android:textColor="@color/color_grey"
+                    android:textSize="@dimen/text_size_16sp" />
+
+                <TextView
+                    android:id="@+id/tv_company2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_10dp"
+                    android:gravity="center"
+                    android:text="Founder &amp; CEO My Life My Power"
+                    android:textColor="@color/color_grey"
+                    android:textSize="@dimen/text_size_16sp" />
+
+                <TextView
+                    android:id="@+id/tv_company3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_10dp"
+                    android:gravity="center"
+                    android:text="Founder &amp; CEO GPS FOR"
+                    android:textColor="@color/color_grey"
+                    android:textSize="@dimen/text_size_16sp" />
+
+                <TextView
+                    android:id="@+id/tv_education"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_10dp"
+                    android:gravity="center"
+                    android:text="Education: Oxford University"
+                    android:textColor="@color/color_grey"
+                    android:textSize="@dimen/text_size_16sp" />
+
+                <ImageView
+                    android:id="@+id/iv_video"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/small_img" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_10dp"
+                    android:text="Daniel Puder Ted Talk Video  "
+                    android:textColor="@color/color_mail_id"
+                    android:textSize="@dimen/text_size_18sp"
+
+                    android:textStyle="bold" />
+
+
+                <Button
+                    android:id="@+id/btn_sharepsot"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="Share Post" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

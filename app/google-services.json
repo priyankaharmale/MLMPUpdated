@@ -1,0 +1,54 @@
+{"project_info": {
+    "project_number": "196682272386",
+    "firebase_url": "https://mlmptwitter.firebaseio.com",
+    "project_id": "mlmptwitter",
+    "storage_bucket": "mlmptwitter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196682272386:android:d76afa4c775b13e8",
+        "android_client_info": {
+          "package_name": "hnwebproject.com.mlmp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196682272386-os1u6noui7de4kgip1sqs7p3b2c5rta0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "hnwebproject.com.mlmp",
+            "certificate_hash": "14f20ff365d41ac9ae07ca4744e23deeb879c238"
+          }
+        },
+        {
+          "client_id": "196682272386-q0qu8k0psptfekrru2eg0mch3jnd30mh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgFzsfKVXJv7ez-pdSs90ARbYHsqMNh6A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "196682272386-q0qu8k0psptfekrru2eg0mch3jnd30mh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splashscreen_bg"
+    tools:context="hnwebproject.com.mlmp.Activity.Activity.GetYearActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginRight="@dimen/dimens_50dp"
+        android:layout_marginLeft="@dimen/dimens_50dp">
+
+        <LinearLayout
+            android:id="@+id/text_main_ques"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimens_20dp"
+            android:layout_marginTop="@dimen/dimens_90dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/what_year_u_r"
+                android:textColor="@color/colorWhite1"
+                android:textSize="@dimen/dimens_20dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+       <EditText
+           android:id="@+id/et_year"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_below="@id/text_main_ques"
+           android:background="@drawable/round_corner_by_10"
+           android:inputType="number"
+           android:hint="@string/year"
+           android:padding="@dimen/dimens_5dp"
+           />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorWhite1"
+        android:hint="@string/next"
+        android:textStyle="bold" />
+
+</RelativeLayout>

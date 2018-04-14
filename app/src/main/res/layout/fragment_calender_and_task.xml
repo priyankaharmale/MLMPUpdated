@@ -1,0 +1,572 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="hnwebproject.com.mlmp.Activity.Fragment.CalenderAndTaskFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/dimens_30dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_service_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dimens_10dp"
+                        android:text="CALENDER &amp; TASK "
+                        android:textColor="@color/blackcolor"
+                        android:textSize="@dimen/text_size_18sp" />
+
+                    <Button
+                        android:id="@+id/btn_inviteother"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/ic_backround"
+                        android:gravity="center"
+                        android:text="Invite Others"
+                        android:textAllCaps="false"
+                        android:textColor="@color/blue_dark"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimens_2dp"
+                    android:background="#D3D3D3" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="@dimen/dimens_20dp"
+                    android:layout_weight="0.55"
+                    android:background="@color/color_calender_background"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/color_calender_bg">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_marginBottom="@dimen/dimens_20dp"
+                                android:layout_marginTop="@dimen/dimens_20dp"
+                                android:visibility="gone">
+
+                                <RelativeLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toEndOf="@+id/tv_date">
+
+                                    <LinearLayout
+                                        android:id="@+id/lay"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:id="@+id/tv_day"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Monday"
+                                            android:textColor="@color/colorWhite1"
+                                            android:textSize="@dimen/text_size_14sp"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:id="@+id/tv_time"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="10:22"
+                                            android:textColor="@color/colorWhite1"
+                                            android:textSize="@dimen/text_size_14sp"
+                                            android:textStyle="bold" />
+                                    </LinearLayout>
+
+
+                                    <LinearLayout
+                                        android:id="@+id/lay1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/lay"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:id="@+id/tv_month"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="JAN"
+                                            android:textColor="@color/colorWhite1"
+                                            android:textSize="14sp"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:id="@+id/tv_year"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="2017"
+                                            android:textColor="@color/colorWhite1"
+                                            android:textSize="14sp"
+                                            android:textStyle="bold" />
+                                    </LinearLayout>
+
+                                </RelativeLayout>
+
+
+                                <TextView
+                                    android:id="@+id/tv_date"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="20"
+                                    android:textColor="@color/colorWhite1"
+                                    android:textSize="40sp" />
+
+
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                        <!--   <CalendarView
+                            android:id="@+id/calendarView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+
+                           />-->
+
+                        <!-- <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/calendarView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            app:mcv_showOtherDates="all"
+                            app:mcv_selectionColor="@color/color_product_price"
+                            />
+
+
+        -->
+                        <hnwebproject.com.mlmp.calender.CustomCalendarView
+                            android:id="@+id/calendar_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            app:background="@color/color_calender_background"
+                            app:calendarBackgroundColor="@color/color_calender_background"
+                            app:calendarTitleTextColor="@color/blue_dark"
+                            app:currentDayOfMonthColor="@color/white"
+                            app:dayOfMonthTextColor="@color/grey"
+                            app:dayOfWeekTextColor="@color/colorBlack"
+                            app:disabledDayBackgroundColor="@color/color_calender_background"
+                            app:disabledDayTextColor="#DEDEDE"
+                            app:selectedDayBackgroundColor="@color/color_add_button"
+                            app:titleLayoutBackgroundColor="@color/color_calender_background"
+                            app:weekLayoutBackgroundColor="@color/color_calender_background">
+
+                        </hnwebproject.com.mlmp.calender.CustomCalendarView>
+
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical"
+                        android:padding="@dimen/dimens_5dp"
+                        android:visibility="gone">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimens_20dp"
+                            android:paddingEnd="@dimen/dimens_10dp"
+                            android:paddingLeft="@dimen/dimens_10dp"
+                            android:paddingRight="@dimen/dimens_10dp"
+                            android:paddingStart="@dimen/dimens_10dp">
+
+                            <View
+                                android:layout_width="@dimen/dimens_1.5dp"
+                                android:layout_height="@dimen/dimens_50dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="3.5dp"
+                                android:background="@color/colorPrimary" />
+
+                            <RelativeLayout
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:layout_marginEnd="@dimen/dimens_10dp"
+                                android:layout_marginRight="-20dp"
+                                android:layout_marginTop="@dimen/dimens_5dp"
+                                android:background="@color/color_event_text_calender"
+                                android:src="@android:drawable/divider_horizontal_bright" />
+
+                            <TextView
+                                android:id="@+id/tv_event"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_20dp"
+                                android:text="Event"
+                                android:textColor="@color/color_event_text_calender"
+                                android:textSize="@dimen/text_size_12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_event_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tv_event"
+                                android:layout_marginStart="@dimen/dimens_20dp"
+                                android:text="" />
+
+                            <ImageButton
+                                android:id="@+id/ib_cal_right"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:background="@null"
+                                android:padding="@dimen/dimens_10dp"
+                                android:src="@drawable/calendar_right_arrow"
+                                android:tint="@color/color_product_name" />
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingEnd="@dimen/dimens_10dp"
+                            android:paddingLeft="@dimen/dimens_10dp"
+                            android:paddingRight="@dimen/dimens_10dp"
+                            android:paddingStart="@dimen/dimens_10dp">
+
+                            <View
+                                android:layout_width="@dimen/dimens_1.5dp"
+                                android:layout_height="@dimen/dimens_50dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="3.5dp"
+                                android:background="@color/colorPrimary" />
+
+                            <RelativeLayout
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:layout_marginEnd="@dimen/dimens_10dp"
+                                android:layout_marginRight="-20dp"
+                                android:layout_marginTop="@dimen/dimens_5dp"
+                                android:background="@color/color_event_text_calender"
+                                android:src="@android:drawable/divider_horizontal_bright" />
+
+                            <TextView
+                                android:id="@+id/tv_Address"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_20dp"
+                                android:text="Address"
+                                android:textSize="@dimen/text_size_12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_event_adress"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tv_Address"
+                                android:layout_marginStart="@dimen/dimens_20dp"
+                                android:text="" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingEnd="@dimen/dimens_10dp"
+                            android:paddingLeft="@dimen/dimens_10dp"
+                            android:paddingRight="@dimen/dimens_10dp"
+                            android:paddingStart="@dimen/dimens_10dp">
+
+                            <View
+                                android:layout_width="@dimen/dimens_1.5dp"
+                                android:layout_height="@dimen/dimens_50dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="3.5dp"
+                                android:background="@color/colorPrimary" />
+
+                            <RelativeLayout
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:layout_marginEnd="@dimen/dimens_10dp"
+                                android:layout_marginRight="-20dp"
+                                android:layout_marginTop="@dimen/dimens_5dp"
+                                android:background="@color/color_event_text_calender"
+                                android:src="@android:drawable/divider_horizontal_bright" />
+
+                            <TextView
+                                android:id="@+id/tv_desc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_20dp"
+                                android:text="Description"
+                                android:textSize="@dimen/text_size_12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_event_desc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tv_desc"
+                                android:layout_marginStart="@dimen/dimens_20dp"
+                                android:text="" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingEnd="@dimen/dimens_10dp"
+                            android:paddingLeft="@dimen/dimens_10dp"
+                            android:paddingRight="@dimen/dimens_10dp"
+                            android:paddingStart="@dimen/dimens_10dp">
+
+
+                            <View
+                                android:layout_width="@dimen/dimens_1.5dp"
+                                android:layout_height="@dimen/dimens_50dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="3.5dp"
+                                android:background="@color/colorPrimary" />
+
+                            <RelativeLayout
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:layout_marginEnd="@dimen/dimens_10dp"
+                                android:layout_marginRight="-20dp"
+                                android:layout_marginTop="@dimen/dimens_5dp"
+                                android:background="@color/color_event_text_calender"
+                                android:src="@android:drawable/divider_horizontal_bright" />
+
+                            <TextView
+                                android:id="@+id/tv_date1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/dimens_20dp"
+                                android:text="Date"
+                                android:textSize="@dimen/text_size_12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_event_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tv_date1"
+                                android:layout_marginStart="@dimen/dimens_20dp"
+                                android:text="" />
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/tv_invite_friend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_date1"
+                            android:layout_marginStart="@dimen/dimens_20dp"
+                            android:layout_marginTop="@dimen/dimens_10dp"
+                            android:text="@string/invite_friend"
+                            android:textColor="@color/color_invite_others" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:orientation="horizontal">
+
+                            <ImageButton
+                                android:id="@+id/ib_edit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:background="@null"
+                                android:padding="@dimen/dimens_10dp"
+                                android:src="@drawable/ic_create_black_24dp"
+                                android:tint="@color/color_product_name" />
+
+                            <ImageButton
+                                android:id="@+id/ib_plus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_toRightOf="@id/ib_plus"
+                                android:background="@null"
+                                android:padding="@dimen/dimens_10dp"
+                                android:src="@drawable/plus"
+                                android:tint="@color/color_product_name" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="@dimen/dimens_20dp"
+                    android:layout_marginRight="@dimen/dimens_20dp"
+                    android:layout_weight="0.45"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:text="TO DO"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="@dimen/dimens_20dp" />
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/input_task_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv"
+                        app:errorTextAppearance="@style/hint_appearancered"
+                        app:hintTextAppearance="@style/hint_appearanceblack">
+
+                        <EditText
+                            android:id="@+id/et_task_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/colorBlack"
+                            android:ems="10"
+                            android:hint="@string/name"
+                            android:singleLine="true"
+                            android:textColor="@color/colorBlack"
+                            android:textCursorDrawable="@drawable/cusrsor_black" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/input_notes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/input_task_name"
+                        app:errorTextAppearance="@style/hint_appearancered"
+                        app:hintTextAppearance="@style/hint_appearanceblack">
+
+                        <EditText
+                            android:id="@+id/et_notes"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/colorBlack"
+                            android:ems="10"
+                            android:hint="@string/notes"
+                            android:singleLine="true"
+                            android:textColor="@color/colorBlack"
+                            android:textCursorDrawable="@drawable/cusrsor_black" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ad_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/input_notes"
+                        android:layout_marginBottom="@dimen/dimens_20dp"
+                        android:weightSum="1">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:id="@+id/input_due_date"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/input_name"
+                            android:layout_weight="0.5"
+                            app:errorTextAppearance="@style/hint_appearancered"
+                            app:hintTextAppearance="@style/hint_appearanceblack">
+
+                            <TextView
+                                android:id="@+id/tv_due_date"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:padding="@dimen/dimens_10dp"
+                                android:singleLine="true"
+                                android:text="Due Date"
+                                android:textColor="@color/black" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:layout_marginLeft="@dimen/dimens_5dp"
+                                android:layout_marginRight="@dimen/dimens_5dp"
+                                android:background="@color/grey" />
+
+                        </android.support.design.widget.TextInputLayout>
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <ImageButton
+                    android:id="@+id/btn_add_to_do_task"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@id/ad_container"
+                    android:background="@drawable/right_btn"
+                    android:padding="@dimen/dimens_10dp"
+                     android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ic_check_black_24dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/ib_plusadd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_add_black_24dp"
+        android:tint="@color/white"
+        app:backgroundTint="@color/tw__blue_default"
+        app:fabSize="normal"
+        />
+</RelativeLayout>

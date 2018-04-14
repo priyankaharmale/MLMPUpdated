@@ -1,0 +1,196 @@
+<resources xmlns:android="http://schemas.android.com/tools">
+    <string name="app_name">MyLifeMyPower</string>
+
+    <!--fb_App_id-->
+    <string name="app_id">424733651276240</string>
+
+
+    <!-- <string android:name="com.twitter.sdk.android.CONSUMER_KEY" name="con_key">4qzEQoCiMHPO3sFDckMtdI30i</string>
+    <string android:name="com.twitter.sdk.android.CONSUMER_SECRET" name="sec_key">jjuRTInFRJ4pkufnwU3ChDocMtqSYF7jWDH5oqglGGKocO2IHT
+</string>-->
+    <!--==========================splashscreen==========================-->
+
+    <string name="get_startted">Get Started</string>
+    <string name="welcome">WELCOME TO MLMP</string>
+    <string name="institute">INSTITUTE</string>
+
+    <!--==========================Login==========================-->
+
+    <string name="login">Login</string>
+    <string name="or">OR</string>
+    <string name="sign_in_with">Sign in with</string>
+    <string name="new_here">New here ?</string>
+    <string name="sign_up"> Sign Up </string>
+    <string name="username">Username</string>
+
+
+    <!--==========================REGISTER==========================-->
+
+    <string name="individual">INDIVIDUAL</string>
+    <string name="organization">ORGANIZATION</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_up_with">SIGN UP WITH</string>
+    <string name="submit">SUBMIT</string>
+    <string name="already_have_account">Already have account?</string>
+
+    <!--==========================organization name==========================-->
+
+    <string name="org_name">ORGANIZATION OR SCHOOL</string>
+    <string name="sname">NAME</string>
+    <string name="sname_ques">What is your display name? this is how</string>
+    <string name="sname_ques2">you will appear publicly?</string>
+    <string name="what_year_your">WHAT YEAR ARE YOU?</string>
+    <string name="year">Year</string>
+    <string name="select_uni">Select University</string>
+    <string name="select_city">Select City</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+
+
+    <string name="what_year_u_r">WHAT YEAR YOU ARE ?  </string>
+    <string name="profile">Profile </string>
+    <string name="title">Title</string>
+    <string name="phone">Phone</string>
+    <string name="education">Education</string>
+    <string name="Website">Website</string>
+    <string name="video_link">Video Link</string>
+    <string name="youtube_link">Youtube Link</string>
+    <string name="linkedin_link">LinkedIn Link</string>
+    <string name="facebook_link">Facebook Link</string>
+    <string name="instagram_link">Instagram Link</string>
+    <string name="twitter_link">Twitter Link</string>
+    <string name="save">Save</string>
+
+
+    <!--==========================DashBoardActivity==========================-->
+
+
+    <string name="title_activity_dash_board">DashBoardActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+
+    <!--==========================Product==========================-->
+    <string name="shopping_cart">PROPOSAL CREATED TO SHOPPING CART / PROPOSALS </string>
+    <string name="org">Organization </string>
+    <string name="partial_grant">Apply for a Partial Grant </string>
+
+    <!--==========================NAvigation Drawer==========================-->
+    <string name="digital_business_card">Digital Business Card</string>
+    <string name="contacts">Contacts</string>
+    <string name="training_centre">Training centre</string>
+    <string name="calender_task">Calender &amp; Task </string>
+    <string name="product_service">Product &amp; Services </string>
+    <string name="donation">Donation </string>
+    <string name="logout">Logout </string>
+
+
+    <string name="company">Company</string>
+    <string name="customer">Customer</string>
+    <string name="assistant">Assistant</string>
+    <string name="proj_bud">Project Budgets</string>
+    <string name="activity">Activity</string>
+    <string name="projects">Projects</string>
+    <string name="owner">Owner</string>
+    <string name="name1">Name</string>
+    <string name="appointment">Appoinment</string>
+    <string name="letters">Letters</string>
+    <string name="notes">Notes</string>
+    <string name="tasks">Tasks</string>
+    <string name="invite_friend">Invite Others</string>
+    <string name="due_date">Due Date</string>
+    <!--<string name="email">Email</string>-->
+    <!--<string name="phone">Phone</string>-->
+    <!--<string name="email">Email</string>-->
+
+    <!--==========================Service ==========================-->
+    <!-- <string name="event_name">Event Name</string>-->
+    <string name="location">Location</string>
+    <!--  Company:-->
+    <!--  Address:-->
+    <!--  Date:-->
+    <string name="date">Date</string>
+    <string name="audience">Audience</string>
+    <string name="amount_of_time">Amount of Time</string>
+    <string name="size_of_Audience">Size of Audience</string>
+    <string name="topic">Topic</string>
+    <string name="budget">Budget</string>
+    <string name="how_many_people_need_trained">How many people they need trained
+</string>
+
+
+    <!--Errors-->
+    <string name="time_our_error">Time out.</string>
+    <string name="can_not_connect">No Internet Connection Available.</string>
+    <string name="auth_fail">Authentication Failed.</string>
+    <string name="server_error">Server error.</string>
+    <string name="netwotk_error">Unable to connect with network.</string>
+    <string name="parser_error">Parse error.</string>
+    <string name="unknow_error_txt">Unknown Error.</string>
+
+    <string name="type_a_message">Type a message</string>
+    <string name="title_activity__view__profile">Activity_View_Profile</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="hint_view_message">View Message</string>
+    <string name="processing">Processing...</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="contacts2">CONTACTS</string>
+    <string name="sort_by">Sort By</string>
+    <string name="grant">Grant</string>
+
+
+    <!--training centre-->
+    <string name="the_training_centre">THE TRAINING CENTRE</string>
+    <string name="black_belt_experience">BLACK BELT TRAINING EXPERIENCE</string>
+    <string name="gps">GPS FOR</string>
+    <string name="str_othrpgm">Other Program</string>
+
+
+    <!--Event NAme-->
+    <string name="event_name">Event Name</string>
+    <string name="address">Address</string>
+    <string name="desc">Description</string>
+    <string name="founderAndCEOTransformationalTech"><![CDATA[Founder & CEO Transformational Technologies]]></string>
+
+
+
+    <!--Twitter Auth Key-->
+    <string name="twitter_consumer_key">iovVE8AL424VOrXYB1LATZrNF</string>
+    <string name="twitter_consumer_secret">JZrBnx2ueFRBTTDhKPbPBQF4pKX68AsrrQwVoUdTqziCYariav</string>
+
+    <!--Image Selection-->
+
+    <string name="mis_folder_all">All Images</string>
+    <string name="mis_preview">Preview</string>
+    <string name="mis_msg_no_camera">No system camera found</string>
+    <string name="mis_msg_amount_limit">Select images amount is limit</string>
+    <string name="mis_action_done">Done</string>
+    <string name="mis_action_button_string">%1$s(%2$d/%3$d)</string>
+    <string name="mis_photo_unit">Shot</string>
+    <string name="mis_tip_take_photo">Take photo</string>
+    <string name="mis_error_image_not_exist">Image error</string>
+    <string name="mis_error_no_permission">Has no permission</string>
+    <string name="mis_permission_dialog_title">Permission Deny</string>
+    <string name="mis_permission_dialog_ok">OK</string>
+    <string name="mis_permission_dialog_cancel">CANCEL</string>
+    <string name="mis_permission_rationale">Storage read permission is needed to pick files.</string>
+    <string name="mis_permission_rationale_write_storage">Storage write permission is needed to save the image.</string>
+
+    <!--DashBoard GPS for-->
+    <string name="str_univrvrsion">University Version 2.4</string>
+    <string name="str_gpsfrlife">GPS For </string>
+    <string name="str_preass">Pre Assessment</string>
+    <string name="str_unit">Unit</string>
+    <string name="str_video">Video</string>
+    <string name="str_write">Writing</string>
+    <string name="str_que">Questions</string>
+    <string name="str_postass">Post Assessment</string>
+    <string name="str_sendcert">Send a Certificate by PDE</string>
+
+</resources>

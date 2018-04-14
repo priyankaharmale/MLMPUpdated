@@ -1,0 +1,917 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="hnwebproject.com.mlmp.Activity.Fragment.TrainingExperienceFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_service_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimens_10dp"
+                android:text="Training Experience"
+                android:textColor="@color/blackcolor"
+                android:textSize="@dimen/text_size_18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimens_2dp"
+                android:background="#D3D3D3" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dimens_20dp"
+            android:background="@drawable/right_btn"
+            app:cardBackgroundColor="@color/white">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/dimens_10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_10dp"
+                    android:background="@drawable/edittext_background">
+
+                    <android.support.v7.widget.AppCompatSpinner
+                        android:id="@+id/spinner_category"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimens_45dp"
+                        android:spinnerMode="dialog" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_10dp"
+                    android:background="@drawable/edittext_background"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_whitebeltcost"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dimens_10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="White Belt Overview"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/iv_whitebeltplus"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/ic_add_black_24dp"
+                            android:tint="@color/color_grey" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_subwhite"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <RelativeLayout
+                            android:id="@+id/rl_cost"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/dimens_10dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Cost: $2,000 "
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="@dimen/dimens_10dp"
+                            android:layout_marginRight="@dimen/dimens_10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Registration Fee: $300 + $1,700 for full training “If you want to apply for a partial sponsorship, please write that below”" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1.5dp"
+                            android:background="@color/tw__light_gray"></View>
+
+                        <RelativeLayout
+                            android:id="@+id/rl_outcomes"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/dimens_10dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Outcomes:"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="@dimen/dimens_10dp"
+                            android:layout_marginRight="@dimen/dimens_10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Analyze the challenges (i.e. life skills, environmental challenges, learning styles etc.) that limit their personal growth in college learning and interpersonal contexts. Analyze various situations and contexts to be able to choose appropriate responses in accordance with their goals and objectives." />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1.5dp"
+                            android:background="@color/tw__light_gray"></View>
+
+                        <RelativeLayout
+                            android:id="@+id/rl_what"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/dimens_10dp"
+                                android:layout_marginTop="10dp"
+                                android:text="What is expected after:"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="@dimen/dimens_10dp"
+                            android:layout_marginRight="@dimen/dimens_10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="All graduates of the White Belt training will get to complete a continued coaching program over the next 6 months. This will be for personal and professional goals. To get to the Red Belt program you will get to set these goals, and follow through with your word. We will support you to make this come true and help you understand what is getting in the way of you achieving your best self every day." />
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_1stdegree"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_10dp"
+                    android:background="@drawable/edittext_background"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_Blackbeltcost"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dimens_10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Black Belt Overview"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/iv_blackbeltplus"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/ic_add_black_24dp"
+                            android:tint="@color/color_grey" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_sub1stdegree"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/dimens_10dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Cost: $3,000  "
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+
+                        </RelativeLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="@dimen/dimens_10dp"
+                            android:layout_marginRight="@dimen/dimens_10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/dimens_10dp"
+                                android:text="Registration Fee: $400 + $2,600 for full training “If you want to apply for a partial sponsorship, please write that below"></TextView>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1.5dp"
+                                android:background="@color/tw__light_gray"></View>
+
+                            <RelativeLayout
+                                android:id="@+id/rl_1stdegreeoutcomes"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/dimens_10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:text="Outcomes:"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="@dimen/dimens_10dp"
+                                android:layout_marginRight="@dimen/dimens_10dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Instill motivation with support and guidance which will lead to a greater sense of life purpose and increase self esteem. Analyze their value systems to inform their decision-making processes.">
+
+                                </TextView>
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1.5dp"
+                                android:background="@color/tw__light_gray"></View>
+
+                            <RelativeLayout
+                                android:id="@+id/rl_1stdegreewhat"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/dimens_10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:text="What is expected after::"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="@dimen/dimens_10dp"
+                                android:layout_marginRight="@dimen/dimens_10dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="All graduates of the Black Belt training will get to complete a continued coaching program over the next 6 months. This will include a monthly call plus a monthly one on one mentor/coaching meetup or call depending on locations to be coached. This is about hitting goals, support in Black Belt in creating their future come true. We will also practice the experiences you have learned and making them perfect. For this 6 months, you will also get to work with at least 100 people with 5-12 of them being consistent."></TextView>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_redbelt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_10dp"
+                    android:background="@drawable/edittext_background"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_redBelt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dimens_10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Red Belt Overview"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/iv_redbeltplus"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/ic_add_black_24dp"
+                            android:tint="@color/color_grey" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_subredbelt"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <RelativeLayout
+                            android:id="@+id/rl_redbeltcost"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/dimens_10dp"
+                                android:layout_marginLeft="@dimen/dimens_10dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Cost: $3,000  "
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="@dimen/dimens_10dp"
+                            android:layout_marginRight="@dimen/dimens_10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Registration Fee: $400 + $2,600 for full training “If you want to apply for a partial sponsorship, please write that below"></TextView>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1.5dp"
+                                android:background="@color/tw__light_gray"></View>
+
+                            <RelativeLayout
+                                android:id="@+id/rl_redbeltoutcomes"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/dimens_10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:text="Outcomes:"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="@dimen/dimens_10dp"
+                                android:layout_marginRight="@dimen/dimens_10dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Develop plans to create intrinsic motivation that encourage students to work diligently towards their future. Foster responsibility and accountability which will increase resiliency to achieve success in any endeavor in life."></TextView>
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1.5dp"
+                                android:background="@color/tw__light_gray"></View>
+
+                            <RelativeLayout
+                                android:id="@+id/rl_redbeltwhat"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/dimens_10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:text="What is expected after:"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="@dimen/dimens_10dp"
+                                android:layout_marginRight="@dimen/dimens_10dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="All graduates of the Red Belt training will get to complete a continued coaching program over the next 6 months. This 6 months will be for you to practicing the experiences you have learned. The goal is to start to teach others and coach others how to get from where they are to where they want to be in their life. We want you to work with youth and adults to understand the difference and to be able to have a diverse group of people and experiences. The goal would be to support 50 people within these 6 months with creating some data to understand feedback, your abilities and need for growth."></TextView>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_2ndDegreebelt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_10dp"
+                    android:background="@drawable/edittext_background"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_2ndDegreeBelt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_dfds"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dimens_10dp"
+                            android:layout_marginTop="10dp"
+
+                            android:text="2nd Degree Black Belt Overview"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/iv_2ndDegreeplus"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/ic_add_black_24dp"
+                            android:tint="@color/color_grey" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_sub2ndDegreebelt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <RelativeLayout
+                            android:id="@+id/rl_2ndDegreecost"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="@dimen/dimens_10dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Cost: $3,000  "
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="@dimen/dimens_10dp"
+                            android:layout_marginRight="@dimen/dimens_10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Registration Fee: $400 + $2,600 for full training “If you want to apply for a partial sponsorship, please write that below"></TextView>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1.5dp"
+                                android:background="@color/tw__light_gray"></View>
+
+                            <RelativeLayout
+                                android:id="@+id/rl_2ndDegreeoutcomes"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/dimens_10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:text="Outcomes:"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="@dimen/dimens_10dp"
+                                android:layout_marginRight="@dimen/dimens_10dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Develop plans to create intrinsic motivation that encourage students to work diligently towards their future. Foster responsibility and accountability which will increase resiliency to achieve success in any endeavor in life."></TextView>
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1.5dp"
+                                android:background="@color/tw__light_gray"></View>
+
+                            <RelativeLayout
+                                android:id="@+id/rl_2ndDegreetwhat"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/dimens_10dp"
+                                    android:layout_marginTop="10dp"
+                                    android:text="What is expected after:"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:layout_marginLeft="@dimen/dimens_10dp"
+                                android:layout_marginRight="@dimen/dimens_10dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="All graduates of the Red Belt training will get to complete a continued coaching program over the next 6 months. This 6 months will be for you to practicing the experiences you have learned. The goal is to start to teach others and coach others how to get from where they are to where they want to be in their life. We want you to work with youth and adults to understand the difference and to be able to have a diverse group of people and experiences. The goal would be to support 50 people within these 6 months with creating some data to understand feedback, your abilities and need for growth."></TextView>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_no_peple"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:errorTextAppearance="@style/hint_appearancered"
+                    app:hintTextAppearance="@style/hint_appearanceblack">
+
+                    <EditText
+                        android:id="@+id/et_no_peple"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorBlack"
+                        android:ems="10"
+                        android:hint="@string/how_many_people_need_trained"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:textColor="@color/colorBlack"
+                        android:textCursorDrawable="@drawable/cusrsor_black" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_event_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:errorTextAppearance="@style/hint_appearancered"
+                    app:hintTextAppearance="@style/hint_appearanceblack">
+
+                    <EditText
+                        android:id="@+id/et_event_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorBlack"
+                        android:ems="10"
+                        android:hint="@string/event_name"
+                        android:singleLine="true"
+                        android:textColor="@color/colorBlack"
+                        android:textCursorDrawable="@drawable/cusrsor_black" />
+
+                </android.support.design.widget.TextInputLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_company"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:errorTextAppearance="@style/hint_appearancered"
+                    app:hintTextAppearance="@style/hint_appearanceblack">
+
+                    <EditText
+                        android:id="@+id/et_company"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorBlack"
+                        android:ems="10"
+
+                        android:hint="@string/company"
+                        android:singleLine="true"
+                        android:textColor="@color/colorBlack"
+                        android:textCursorDrawable="@drawable/cusrsor_black" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:errorTextAppearance="@style/hint_appearancered"
+                    app:hintTextAppearance="@style/hint_appearanceblack">
+
+                    <EditText
+                        android:id="@+id/et_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorBlack"
+                        android:ems="10"
+                        android:hint="@string/location"
+                        android:singleLine="true"
+                        android:textColor="@color/colorBlack"
+                        android:textCursorDrawable="@drawable/cusrsor_black" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:errorTextAppearance="@style/hint_appearancered"
+                    app:hintTextAppearance="@style/hint_appearanceblack">
+
+                    <EditText
+                        android:id="@+id/et_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorBlack"
+                        android:ems="10"
+                        android:hint="@string/address"
+                        android:singleLine="true"
+                        android:textColor="@color/colorBlack"
+                        android:textCursorDrawable="@drawable/cusrsor_black" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_ammount_of_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:errorTextAppearance="@style/hint_appearancered"
+                    app:hintTextAppearance="@style/hint_appearanceblack">
+
+                    <EditText
+                        android:id="@+id/et_ammount_of_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorBlack"
+                        android:ems="10"
+                        android:hint="@string/amount_of_time"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:textColor="@color/colorBlack"
+                        android:textCursorDrawable="@drawable/cusrsor_black" />
+
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimens_5dp"
+                    app:errorTextAppearance="@style/hint_appearancered"
+                    app:hintTextAppearance="@style/hint_appearanceblack">
+                    >
+
+                    <EditText
+                        android:id="@+id/et_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorBlack"
+                        android:editable="false"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:hint="Event Date"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:textColor="@color/colorBlack"
+                        android:textCursorDrawable="@drawable/cusrsor_black" />
+
+                    >
+
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_audience"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:errorTextAppearance="@style/hint_appearancered"
+                    app:hintTextAppearance="@style/hint_appearanceblack">
+
+                    <EditText
+                        android:id="@+id/et_audience"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorBlack"
+                        android:ems="10"
+                        android:hint="@string/audience"
+                        android:singleLine="true"
+
+                        android:textColor="@color/colorBlack"
+                        android:textCursorDrawable="@drawable/cusrsor_black" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_size_of_audience"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:errorTextAppearance="@style/hint_appearancered"
+                    app:hintTextAppearance="@style/hint_appearanceblack">
+
+                    <EditText
+                        android:id="@+id/et_size_of_audience"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorBlack"
+                        android:ems="10"
+                        android:hint="@string/size_of_Audience"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:textColor="@color/colorBlack"
+                        android:textCursorDrawable="@drawable/cusrsor_black" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_topic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:errorTextAppearance="@style/hint_appearancered"
+                    app:hintTextAppearance="@style/hint_appearanceblack">
+
+                    <EditText
+                        android:id="@+id/et_topic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorBlack"
+                        android:ems="10"
+                        android:hint="@string/topic"
+                        android:singleLine="true"
+                        android:textColor="@color/colorBlack"
+                        android:textCursorDrawable="@drawable/cusrsor_black" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/input_budget"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:errorTextAppearance="@style/hint_appearancered"
+                    app:hintTextAppearance="@style/hint_appearanceblack">
+
+                    <EditText
+                        android:id="@+id/et_budget"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorBlack"
+                        android:ems="10"
+                        android:hint="@string/budget"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:textColor="@color/colorBlack"
+                        android:textCursorDrawable="@drawable/cusrsor_black" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btn_submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dimens_10dp"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center"
+                    android:text="Submit"
+                    android:textColor="@color/colorWhite1"
+
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+</ScrollView>

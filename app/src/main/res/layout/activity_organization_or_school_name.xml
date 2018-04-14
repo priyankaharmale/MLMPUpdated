@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splashscreen_bg"
+    tools:context="hnwebproject.com.mlmp.Activity.Activity.OrganizationOrSchoolNameActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/text_main_ques"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimens_20dp"
+            android:layout_marginTop="@dimen/dimens_90dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/org_name"
+                android:textColor="@color/colorWhite1"
+                android:textSize="@dimen/dimens_20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sname"
+                android:textColor="@color/colorWhite1"
+                android:textSize="@dimen/dimens_20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_main_ques"
+            android:layout_margin="@dimen/dimens_10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="@dimen/dimens_30dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sname_ques"
+                android:textColor="@color/colorWhite1"
+                android:textSize="@dimen/dimens_20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sname_ques2"
+                android:textColor="@color/colorWhite1"
+                android:textSize="@dimen/dimens_20dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ly1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/question"
+            android:layout_marginLeft="@dimen/dimens_50dp"
+            android:layout_marginRight="@dimen/dimens_50dp"
+            android:layout_marginTop="@dimen/dimens_30dp"
+            android:background="@drawable/round_corner_by_10"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_sel_uni"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/down_arow"
+                android:hint="@string/select_uni"
+                android:padding="@dimen/dimens_10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ly1"
+            android:layout_marginLeft="@dimen/dimens_50dp"
+            android:layout_marginRight="@dimen/dimens_50dp"
+            android:layout_marginTop="@dimen/dimens_30dp"
+            android:background="@drawable/round_corner_by_10"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/tv_sel_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_corner_by_10"
+                android:drawableRight="@drawable/down_arow"
+                android:hint="@string/select_city"
+                android:padding="@dimen/dimens_10dp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorWhite1"
+        android:hint="@string/next"
+        android:textStyle="bold" />
+
+</RelativeLayout>

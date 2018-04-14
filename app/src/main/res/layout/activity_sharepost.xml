@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <!--  <android.support.v7.widget.Toolbar
+              android:id="@+id/toolbar"
+              android:layout_width="match_parent"
+              android:layout_height="?attr/actionBarSize"
+              android:background="?attr/colorPrimary"
+              app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+          -->
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            android:minHeight="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_digital_business_card_tool_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dimens_30dp"
+                    android:singleLine="true"
+                    android:text="Share Post"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="18sp" />
+
+
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/dimens_20dp"
+        android:background="@drawable/right_btn"
+        app:cardBackgroundColor="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_sharepost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/sqaure_shape"
+                android:hint="Write Something here....."
+                android:inputType="textMultiLine"
+                android:maxLines="100"
+                android:minLines="1"
+                android:padding="10dp"
+                android:scrollbars="vertical" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_name"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dimens_20dp"
+                android:gravity="center"
+                android:text="Share Post On"
+                android:textColor="@color/color_grey"
+                android:textSize="@dimen/text_size_18sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dimens_10dp"
+                android:orientation="horizontal">
+
+
+                <ImageButton
+                    android:id="@+id/ib_lin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimens_5dp"
+                    android:layout_marginStart="@dimen/dimens_5dp"
+                    android:background="@null"
+                    android:src="@drawable/linkedin" />
+
+                <ImageButton
+                    android:id="@+id/ib_facebook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimens_5dp"
+                    android:layout_marginStart="@dimen/dimens_5dp"
+                    android:background="@null"
+                    android:src="@drawable/facebook" />
+
+                <ImageButton
+                    android:id="@+id/ib_insta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimens_5dp"
+                    android:layout_marginStart="@dimen/dimens_5dp"
+                    android:background="@null"
+                    android:visibility="gone"
+                    android:src="@drawable/instagram"
+                    android:tint="@android:color/holo_red_dark" />
+
+                <ImageButton
+                    android:id="@+id/ib_twitter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimens_5dp"
+                    android:layout_marginStart="@dimen/dimens_5dp"
+                    android:background="@null"
+                    android:src="@drawable/twitter" />
+                <ImageButton
+                    android:id="@+id/ib_gmail"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="@dimen/dimens_5dp"
+                    android:layout_marginStart="@dimen/dimens_5dp"
+                    android:background="@null"
+                    android:src="@drawable/google_plus_icon" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
