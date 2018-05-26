@@ -79,7 +79,6 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
  */
 
 public class AddEventActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
-
     EditText et_event_name, et_desc, et_address;
     TextView tv_event_dated;
     private int mYear, mMonth, mDay;
