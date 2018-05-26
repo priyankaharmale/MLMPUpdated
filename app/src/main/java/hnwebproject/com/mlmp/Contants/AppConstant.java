@@ -157,6 +157,17 @@ public class AppConstant {
     public static final String KEY_BELT = "KEY_BELT";
     public static final String API_GPS_FOR_LIST="http://tech599.com/tech599.com/johnrosh/mylifemypower/api/fetch_categories.php";
 
+
+
+    /**********************************Invite others******************************************/
+    public static final String API_INVITE_OTHER="http://tech599.com/tech599.com/johnrosh/mylifemypower/api/add_contacts.php";
+    public static final String API_CONTACT_LIST="http://tech599.com/tech599.com/johnrosh/mylifemypower/api/view_contact_list.php";
+
+
+    public static final String KEY_NOTIFICATION_COUNT="http://tech599.com/tech599.com/johnrosh/mylifemypower/api/payment_success_notification.php";
+    public static final String KEY_PAYMENTDONE_LIST="http://tech599.com/tech599.com/johnrosh/mylifemypower/api/payment_notifiction_list.php";
+
+
     public static String dateToString(Date date, String format) {
         SimpleDateFormat df = new SimpleDateFormat(format);
         return df.format(date);

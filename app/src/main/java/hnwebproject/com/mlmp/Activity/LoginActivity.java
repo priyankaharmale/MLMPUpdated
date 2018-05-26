@@ -107,6 +107,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 .build();
 
         Twitter.initialize(twitterConfig);
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
 ///////////////////////////////gmail///////////////////////////////////////////
@@ -575,6 +576,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     String email = jsonObject.getString("email");
                                     String profile_pic = jsonObject.getString("profile_pic");
                                     university_name = jsonObject.getString("university_name");
+                                    String status = jsonObject.getString("status");
+
+                                    SharedPreference.statusLogin(getApplicationContext(), status);
                                     String password = "";
                                     SharedPreference.profileSave(getApplicationContext(), user_id, full_name, user_role, profile_pic, "app", password, email);
                                 }

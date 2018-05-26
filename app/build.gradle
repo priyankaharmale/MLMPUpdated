@@ -55,5 +55,10 @@ dependencies {
     compile 'com.twitter.sdk.android:tweet-composer:3.1.1'
     compile 'com.twitter.sdk.android:twitter-mopub:3.1.1'
     compile project(':linkedin-sdk')
+/***************************Add Event to google calender************************************************/
+    compile 'com.karumi:dexter:4.1.0'
+
+
 }
+
 apply plugin: 'com.google.gms.google-services'

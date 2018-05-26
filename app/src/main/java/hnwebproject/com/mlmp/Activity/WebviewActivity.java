@@ -46,6 +46,11 @@ public class WebviewActivity extends AppCompatActivity {
         mWebView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_INSET);
 
         String url=getIntent().getStringExtra("url");
+        if(!url.contains("http://"))
+        {
+            url="http://"+url;
+        }
+
         mWebView.loadUrl(url);
 
         mWebView.setWebViewClient(new MyWebViewClient());

@@ -39,6 +39,7 @@
                         android:layout_alignParentStart="true"
                         android:background="@null"
                         android:padding="@dimen/dimens_10dp"
+                        android:visibility="gone"
                         android:src="@drawable/right_arrow"
                         android:tint="@color/colorWhite1" />
 
@@ -56,6 +57,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:background="@null"
+                        android:visibility="gone"
+
                         android:padding="@dimen/dimens_10dp"
                         android:src="@drawable/left_arrrow"
                         android:tint="@color/colorWhite1" />

@@ -488,8 +488,6 @@ public class ViewPRofileActivity extends AppCompatActivity implements View.OnCli
 
 
         if (image_path == null || image_path.equals("") || image_path.isEmpty()) {
-
-            // fileParams.put(AppConstant.KEY_PROFILEPIC,profile_pic);
             Log.d("image_path", "image_path:\t" + profile_pic);
         } else {
             fileParams.put(AppConstant.KEY_PROFILEPIC, image_path);
@@ -712,6 +710,7 @@ public class ViewPRofileActivity extends AppCompatActivity implements View.OnCli
         DeepLinkHelper deepLinkHelper = DeepLinkHelper.getInstance();
         deepLinkHelper.onActivityResult(this, requestCode, resultCode, data);
         getUserData(ddfdfds);
+
         if (resultCode == RESULT_CANCELED) {
             return;
         }

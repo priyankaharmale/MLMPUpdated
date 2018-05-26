@@ -23,6 +23,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +45,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import hnwebproject.com.mlmp.Contants.AppConstant;
 import hnwebproject.com.mlmp.R;
 import hnwebproject.com.mlmp.Utility.AlertUtility;
@@ -57,8 +59,9 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
 
     String TAG
             = BusinessCardActivity.class.getSimpleName();
-    ImageView iv_view_profile_pic, iv_video;
-    Button btn_phone_number, btn_email, btn_invite_to_MY_DBC,btn_sharepsot;
+    ImageView iv_video;
+    CircleImageView iv_view_profile_pic;
+    Button btn_phone_number, btn_email, btn_invite_to_MY_DBC, btn_sharepsot;
     TextView tv_name, tv_title, tv_mail_id, tv_company3, tv_company2, tv_company1, tv_education;
     ImageButton ib_you_tube, ib_lin, ib_fb, ib_insta, ib_twitter;
     Drawable drawable;
@@ -66,7 +69,7 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
     private String email;
     public static ActionBarDrawerToggle toggle;
     private TextView tv_website;
-
+    ProgressBar progress;
     String youtube_link, linkedin_link, facebook_link, instagram_link, twitter_link;
     private String video_url;
     private ImageButton ib_edit;
@@ -82,6 +85,7 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
 
 
         ib_edit = (ImageButton) toolbar.findViewById(R.id.ib_edit);
+        progress = (ProgressBar) findViewById(R.id.progress);
         ib_edit.setOnClickListener(this);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -120,7 +124,7 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
         tv_education = (TextView) findViewById(R.id.tv_education);
         iv_video = (ImageView) findViewById(R.id.iv_video);
         iv_video.setOnClickListener(this);
-        iv_view_profile_pic = (ImageView) findViewById(R.id.iv_view_profile_pic);
+        iv_view_profile_pic = (CircleImageView) findViewById(R.id.iv_view_profile_pic);
         btn_phone_number = (Button) findViewById(R.id.btn_phone_number);
         btn_email = (Button) findViewById(R.id.btn_email);
         btn_invite_to_MY_DBC = (Button) findViewById(R.id.btn_invite_to_MY_DBC);
@@ -147,7 +151,7 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View v) {
         switch (v.getId()) {
 
-            case  R.id.tv_website:
+            case R.id.tv_website:
 
                 Intent intentw = new Intent(BusinessCardActivity.this, WebviewActivity.class);
                 intentw.putExtra("url", website);
@@ -216,7 +220,7 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
 
             case R.id.ib_edit:
 
-               // Toast.makeText(this, "pressed", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(this, "pressed", Toast.LENGTH_SHORT).show();
                 Intent i_login = new Intent(BusinessCardActivity.this, ViewPRofileActivity.class);
                 startActivity(i_login);
                 break;
@@ -264,7 +268,7 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
                         myDialog.dismiss();
 
 
-                        Log.d(TAG,"res_ViewPRofile"+response);
+                        Log.d(TAG, "res_ViewPRofile" + response);
 
                         try {
                             JSONObject j = new JSONObject(response);
@@ -285,16 +289,17 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
                                 String phone = jsonObject.getString("phone");
                                 String head_line = jsonObject.getString("head_line");
                                 String education = jsonObject.getString("education");
-                                 youtube_link = jsonObject.getString("youtube_link");
-                                 linkedin_link = jsonObject.getString("linkedin_link");
-                                 facebook_link = jsonObject.getString("facebook_link");
-                                 instagram_link = jsonObject.getString("instagram_link");
-                                 twitter_link = jsonObject.getString("twitter_link");
-                                 website = jsonObject.getString("website");
+                                youtube_link = jsonObject.getString("youtube_link");
+                                linkedin_link = jsonObject.getString("linkedin_link");
+                                facebook_link = jsonObject.getString("facebook_link");
+                                System.out.println("Facebook" +facebook_link);
+                                instagram_link = jsonObject.getString("instagram_link");
+                                twitter_link = jsonObject.getString("twitter_link");
+                                website = jsonObject.getString("website");
                                 String company1 = jsonObject.getString("company1");
                                 String company2 = jsonObject.getString("company2");
                                 String company3 = jsonObject.getString("company3");
-                                video_url = jsonObject.getString("video_url");
+                                video_url = jsonObject.getString("video_link");
 
                                 //  String business = jsonObject.getString("business");
 
@@ -375,15 +380,15 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
         tv_education.setText(education);
         btn_phone_number.setText(phone);
 
-        if(company3.isEmpty() ){
+        if (company3.isEmpty()) {
             tv_company3.setVisibility(View.GONE);
-        }else {
+        } else {
             tv_company3.setText(company3);
         }
 
-        if(company2.isEmpty()){
+        if (company2.isEmpty()) {
             tv_company2.setVisibility(View.GONE);
-        }else {
+        } else {
             tv_company2.setText(company2);
         }
 
@@ -399,13 +404,12 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
                     .listener(new RequestListener<String, GlideDrawable>() {
                         @Override
                         public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-                            //    progress_gift_details.setVisibility(View.GONE);
+                            progress.setVisibility(View.GONE);
                             return false;
                         }
-
                         @Override
                         public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                            //   progress_gift_details.setVisibility(View.GONE);
+                            progress.setVisibility(View.GONE);
                             return false;
                         }
                     })
@@ -414,8 +418,6 @@ public class BusinessCardActivity extends AppCompatActivity implements View.OnCl
             Log.e("Error", e.getMessage());
         }
     }
-
-
 
 
     private void getsaveData() {

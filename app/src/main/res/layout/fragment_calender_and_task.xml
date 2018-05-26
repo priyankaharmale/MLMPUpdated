@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="hnwebproject.com.mlmp.Activity.Fragment.CalenderAndTaskFragment">
+    tools:context="hnwebproject.com.mlmp.Fragment.CalenderAndTaskFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -40,9 +40,9 @@
                         android:id="@+id/btn_inviteother"
                         android:layout_width="100dp"
                         android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
                         android:layout_gravity="right"
-                        android:layout_marginTop="8dp"
                         android:background="@drawable/ic_backround"
                         android:gravity="center"
                         android:text="Invite Others"

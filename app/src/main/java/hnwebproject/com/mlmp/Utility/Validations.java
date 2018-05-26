@@ -2,6 +2,7 @@ package hnwebproject.com.mlmp.Utility;
 
 import android.content.Context;
 import android.support.design.widget.TextInputLayout;
+import android.util.Patterns;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -347,5 +348,12 @@ public class Validations {
 
 
         return true;
+    }
+
+    private boolean isValidUrl(EditText editText, String msg, TextInputLayout tt) {
+        String string = editText.getText().toString();
+        Pattern p = Patterns.WEB_URL;
+        Matcher m = p.matcher(string.toLowerCase());
+        return m.matches();
     }
 }

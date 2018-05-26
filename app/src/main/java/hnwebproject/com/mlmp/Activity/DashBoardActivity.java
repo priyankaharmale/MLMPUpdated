@@ -26,6 +26,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -75,14 +76,17 @@ public class DashBoardActivity extends AppCompatActivity
     String TAG = DashBoardActivity.class.getSimpleName();
 
     ImageView iv_view_profile_pic, imageviewicon_tool_bar;
-    ImageButton ib_notification, ib_edit;
+    ImageButton ib_edit;
+    RelativeLayout ib_notification;
     LinearLayout ll_addTocart;
     String name, email, userId, profile_photo, login_through;
     private GoogleApiClient mGoogleApiClient;
     LinearLayout ll_navigation;
     Drawable drawable;
     Toolbar toolbar;
-    TextView tv_count;
+    TextView tv_count, tv_notifictaioncount;
+
+    String isClick;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,10 +95,14 @@ public class DashBoardActivity extends AppCompatActivity
 
         getSaveData();
 
+        final SharedPreferences sharedPreferences = getSharedPreferences("AOP_PREFS", Context.MODE_PRIVATE);
+
+  //      isClick=sharedPreferences.getString("isClick", null);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         tv_digital_business_card_tool_bar = (TextView) toolbar.findViewById(R.id.tv_digital_business_card_tool_bar);
         imageviewicon_tool_bar = (ImageView) toolbar.findViewById(R.id.imageviewicon_tool_bar);
-        ib_notification = (ImageButton) toolbar.findViewById(R.id.ib_notification);
+        ib_notification = (RelativeLayout) toolbar.findViewById(R.id.ib_notification);
+        tv_notifictaioncount = (TextView) toolbar.findViewById(R.id.tv_notifictaioncount);
         ll_addTocart = (LinearLayout) toolbar.findViewById(R.id.ib_edit1);
         ib_edit = (ImageButton) toolbar.findViewById(R.id.ib_edit);
         tv_count = (TextView) toolbar.findViewById(R.id.tv_count);
@@ -102,6 +110,19 @@ public class DashBoardActivity extends AppCompatActivity
         ll_addTocart.setVisibility(View.GONE);
         setSupportActionBar(toolbar);
         ib_edit.setOnClickListener(this);
+        ib_notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DashBoardActivity.this, PaymentDoneListActivity.class);
+                startActivity(intent);
+               /* final SharedPreferences sharedPreferences = getSharedPreferences("AOP_PREFS", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("isClick", "1");
+                editor.commit();*/
+
+
+            }
+        });
 
         ll_addTocart.setOnClickListener(this);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -137,6 +158,7 @@ public class DashBoardActivity extends AppCompatActivity
 
         Log.d("img", "is:\t" + img);
         getProfileData();
+        getNotificationCount();
 
         try {
             Glide.with(DashBoardActivity.this)
@@ -453,9 +475,100 @@ public class DashBoardActivity extends AppCompatActivity
                                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int id) {
                                                 dialog.dismiss();
-                                                if(count.equals("No product in cart"))
-                                                {
+                                                if (count.equals("No product in cart")) {
                                                     tv_count.setText("0");
+                                                }
+
+                                            }
+                                        });
+                                AlertDialog alert = builder.create();
+                                alert.show();
+
+                            }
+                        } catch (JSONException e) {
+                            System.out.println("jsonexeption" + e.toString());
+                        }
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        myDialog.dismiss();
+
+                        //   Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                        String reason = AppUtils.getVolleyError(DashBoardActivity.this, error);
+                        AlertUtility.showAlert(DashBoardActivity.this, reason);
+                        System.out.println("jsonexeption" + error.toString());
+
+                    }
+                }) {
+
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                try {
+
+                    params.put(AppConstant.KEY_USERID, userId);
+
+                } catch (Exception e) {
+                    System.out.println("error" + e.toString());
+                }
+
+
+                return params;
+            }
+
+        };
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        stringRequest.setShouldCache(false);
+        RequestQueue requestQueue = Volley.newRequestQueue(DashBoardActivity.this);
+        requestQueue.add(stringRequest);
+
+    }
+
+
+    private void getNotificationCount() {
+        final ProgressDialog myDialog = Utils.DialogsUtils.showProgressDialog(DashBoardActivity.this, getString(R.string.processing));
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppConstant.KEY_NOTIFICATION_COUNT,
+                new Response.Listener<String>() {
+
+
+                    @Override
+                    public void onResponse(String response) {
+                        myDialog.dismiss();
+
+
+                        Log.d(TAG, "res_ViewPRofile" + response);
+
+                        try {
+                            JSONObject j = new JSONObject(response);
+                            int message_code = j.getInt("message_code");
+
+                            if (message_code == 1) {
+
+                                String count = j.getString("response");
+                                tv_notifictaioncount.setText(count);
+
+
+                            } else {
+                                final String count = j.getString("response");
+
+                                final AlertDialog.Builder builder = new AlertDialog.Builder(DashBoardActivity.this);
+                                builder.setMessage(count)
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                dialog.dismiss();
+                                                if (count.equals("No product in cart")) {
+                                                    tv_notifictaioncount.setText("0");
                                                 }
 
                                             }

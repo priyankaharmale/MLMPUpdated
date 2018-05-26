@@ -30,7 +30,8 @@
                     android:layout_height="wrap_content"
                     android:text="Event Name:"
                     android:textColor="@color/tw__composer_light_gray"
-                    android:textSize="@dimen/text_size_18dp" />
+                    android:textSize="@dimen/text_size_18dp"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tv_eventname"
@@ -45,7 +46,9 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+
+                android:visibility="gone">
 
                 <TextView
 
@@ -67,7 +70,9 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+
+                android:visibility="gone">
 
                 <TextView
 
@@ -89,6 +94,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimens_10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -97,7 +103,8 @@
                     android:layout_height="wrap_content"
                     android:text="Date: "
                     android:textColor="@color/tw__composer_light_gray"
-                    android:textSize="@dimen/text_size_14dp" />
+                    android:textSize="@dimen/text_size_14dp"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tv_date"

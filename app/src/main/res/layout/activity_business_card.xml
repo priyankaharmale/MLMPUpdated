@@ -122,11 +122,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimens_200dp">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/iv_view_profile_pic"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+
                     android:src="@drawable/sllider_menu_avtar" />
+                <ProgressBar
+                    android:id="@+id/progress"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/blue"
+                    android:indeterminateTintMode="src_atop"
+                    android:visibility="visible" />
 
             </RelativeLayout>
 
@@ -152,7 +165,7 @@
                         android:background="@drawable/round_corner_grey"
                         android:paddingLeft="@dimen/dimens_40dp"
                         android:paddingRight="@dimen/dimens_40dp"
-                        android:text="408-529-3356"
+                        android:text=""
                         android:textColor="@color/colorWhite1" />
 
                     <Button
@@ -354,8 +367,8 @@
                         android:background="@color/colorPrimary"
                         android:text="Share Post"
                         android:textAllCaps="false"
-                        android:textSize="18dp"
-                        android:textColor="@color/white" />
+                        android:textColor="@color/white"
+                        android:textSize="18dp" />
                 </LinearLayout>
 
 

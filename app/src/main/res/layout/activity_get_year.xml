@@ -10,9 +10,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/dimens_50dp"
         android:layout_marginRight="@dimen/dimens_50dp"
-        android:layout_marginLeft="@dimen/dimens_50dp">
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/text_main_ques"
@@ -33,16 +33,31 @@
 
         </LinearLayout>
 
-       <EditText
-           android:id="@+id/et_year"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_below="@id/text_main_ques"
-           android:background="@drawable/round_corner_by_10"
-           android:inputType="number"
-           android:hint="@string/year"
-           android:padding="@dimen/dimens_5dp"
-           />
+        <RelativeLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+
+            android:layout_below="@id/text_main_ques">
+
+            <Spinner
+                android:id="@+id/et_year"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:hint="@string/year"
+                android:inputType="number"
+                android:padding="@dimen/dimens_5dp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/down_arow"
+                android:layout_marginRight="@dimen/dimens_10dp"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
 
     </RelativeLayout>
 

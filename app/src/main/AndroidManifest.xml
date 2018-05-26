@@ -14,6 +14,10 @@
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <uses-permission-sdk-23 android:name="android.permission.READ_CALENDAR" />
+    <uses-permission-sdk-23 android:name="android.permission.WRITE_CALENDAR" />
 
 
     <application
@@ -41,7 +45,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
+                android:resource="@xml/provider_paths" />
         </provider>
 
 
@@ -93,17 +97,31 @@
         <activity
             android:name="hnwebproject.com.mlmp.Activity.WebviewActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="hnwebproject.com.mlmp.Activity.VideoViewActivity"
+
+        <activity
+            android:name="hnwebproject.com.mlmp.Activity.VideoViewActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name="hnwebproject.com.mlmp.Activity.EventListActivity"
+        <activity
+            android:name="hnwebproject.com.mlmp.Activity.EventListActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="hnwebproject.com.mlmp.Activity.BusinessCardActivity"
-            android:theme="@style/AppTheme.NoActionBar" ></activity>
-        <activity android:name="hnwebproject.com.mlmp.Activity.ProductAddToCartListActivity"
-            android:theme="@style/AppTheme.NoActionBar" ></activity>
-        <activity android:name="hnwebproject.com.mlmp.Activity.ProductDetailsActivity"
-            android:theme="@style/AppTheme.NoActionBar" ></activity>
+
+        <activity
+            android:name="hnwebproject.com.mlmp.Activity.AddEventActivity"
+            android:label="Add Event"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="hnwebproject.com.mlmp.Activity.PaymentDoneListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="hnwebproject.com.mlmp.Activity.BusinessCardActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="hnwebproject.com.mlmp.Activity.ProductAddToCartListActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="hnwebproject.com.mlmp.Activity.ProductDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

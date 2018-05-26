@@ -1,16 +1,28 @@
 package hnwebproject.com.mlmp.Fragment;
 
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.icu.util.TimeZone;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CalendarContract;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +32,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +43,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 
 import org.json.JSONArray;
@@ -44,7 +63,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import hnwebproject.com.mlmp.Activity.AddEventActivity;
+import hnwebproject.com.mlmp.Activity.BusinessCardActivity;
+import hnwebproject.com.mlmp.Activity.DashBoardActivity;
 import hnwebproject.com.mlmp.Activity.EventListActivity;
+import hnwebproject.com.mlmp.Activity.GetYearActivity;
+import hnwebproject.com.mlmp.Activity.ViewPRofileActivity;
 import hnwebproject.com.mlmp.Contants.AppConstant;
 import hnwebproject.com.mlmp.Model.EventModel;
 import hnwebproject.com.mlmp.R;
@@ -54,6 +78,8 @@ import hnwebproject.com.mlmp.Utility.Utils;
 import hnwebproject.com.mlmp.Utility.Validations;
 import hnwebproject.com.mlmp.calender.CalendarListener;
 import hnwebproject.com.mlmp.calender.CustomCalendarView;
+
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -72,14 +98,17 @@ public class CalenderAndTaskFragment extends Fragment implements View.OnClickLis
     ArrayList<EventModel> eventModels;
     ArrayList<String> arraylistDate;
     ProgressDialog myDialog;
-    EditText et_event_name, et_desc, et_address;
-    TextInputLayout input_event_address, input_event_desc, input_event_name, input_layout_event_date;
+    EditText et_event_name, et_desc, et_address, et_email;
+    TextInputLayout input_event_address, input_event_desc, input_event_name, input_layout_event_date, input_email;
     TextInputLayout input_task_name, input_notes, input_due_date;
     EditText et_task_name, et_notes;
     TextView tv_event_date, tv_due_date;
-    String user_id;
+    String user_id, userEmail;
     ImageButton btn_add_to_do_task;
     ArrayList<EventModel> selected_Date_events;
+    final int callbackId = 42;
+
+    Button btn_inviteother;
 
     public CalenderAndTaskFragment() {
         // Required empty public constructor
@@ -122,6 +151,69 @@ public class CalenderAndTaskFragment extends Fragment implements View.OnClickLis
         et_task_name = (EditText) view.findViewById(R.id.et_task_name);
         et_notes = (EditText) view.findViewById(R.id.et_notes);
         tv_due_date = (TextView) view.findViewById(R.id.tv_due_date);
+
+        btn_inviteother = (Button) view.findViewById(R.id.btn_inviteother);
+
+        btn_inviteother.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+              /*  String message = " ";
+                String messageTitle = isim + " Hello ";
+                String messageBody = isim + " " + yurtIsmi + "\n" + " " + ulke_sehir + "\n" + " " + telNo + "\n" + " " + message;
+               */
+                AlertDialog.Builder dialogBuilder1 = new AlertDialog.Builder(getActivity());
+                //dialogBuilder.setCancelable(true);
+
+                LayoutInflater inflater1 = getActivity().getLayoutInflater();
+                final View dialogView1;
+                dialogView1 = inflater1.inflate(R.layout.custom_emailadd_dailog, null);
+                dialogBuilder1.setView(dialogView1);
+
+                input_email = (TextInputLayout) dialogView1.findViewById(R.id.input_email);
+                et_email = (EditText) dialogView1.findViewById(R.id.et_email);
+                ImageView iv_cancle = (ImageView) dialogView1.findViewById(R.id.iv_cancle);
+
+                iv_cancle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        b.dismiss();
+                    }
+                });
+                Button btn_add = (Button) dialogView1.findViewById(R.id.btn_submit);
+
+                btn_add.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (checkValidationForEmail()) {
+
+                            if (Utils.isNetworkAvailable(getActivity())) {
+                                String emailTo = et_email.getText().toString();
+
+                                //   String sms = messageSummary.getText().toString();
+                                String subject = "Invite";
+                                Intent email = new Intent();
+                                email.putExtra(Intent.EXTRA_EMAIL, new String[]{emailTo});
+                                email.setData(Uri.parse("mailto:" + userEmail));
+
+                              /*  email.putExtra(Intent.EXTRA_CC, new String[]{"xxxx@gmail.com"});
+                                email.putExtra(Intent.EXTRA_BCC, new String[]{"xxx@gmail.com"});*/
+                                email.putExtra(Intent.EXTRA_SUBJECT, subject);
+                                email.putExtra(Intent.EXTRA_TEXT, "https://drive.google.com/file/d/1yYr4TTLsuCz3Yk9CIyqQqtoJPEpG-NCX/view?usp=sharing");
+                                email.setType("sms/rfc822");
+                                //email.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
+                                startActivityForResult(Intent.createChooser(email, "Choose an Email client :"), 0);
+                            } else {
+                                Utils.myToast1(getActivity());
+                            }
+                        }
+                    }
+                });
+                b = dialogBuilder1.create();
+                b.show();
+
+            }
+        });
         tv_due_date.setOnClickListener(this);
 
         ib_cal_right = (ImageButton) view.findViewById(R.id.ib_cal_right);
@@ -149,11 +241,12 @@ public class CalenderAndTaskFragment extends Fragment implements View.OnClickLis
             public void onMonthChanged(Date time) {
                 String month = String.valueOf(time.getMonth());
 
-                SimpleDateFormat mdformat = new SimpleDateFormat("MM/dd/yyyy");
+                SimpleDateFormat mdformat = new SimpleDateFormat("yyyy-MM-dd");
                 String changed_date = mdformat.format(time.getTime());
                 Log.d("changed_date", "" + changed_date);
                 arraylistDate.clear();
-                fetchEvents(user_id, changed_date,changed_date);
+                fetchEvents(user_id, changed_date, changed_date);
+                //    customCalendarView.setBackgroundColorOfRedOrGreenNew(arraylistDate, todayDate, "UnAvailable");
 
                 //Toast.makeText(getActivity(), "" + changed_date, Toast.LENGTH_SHORT).show();
             }
@@ -178,6 +271,7 @@ public class CalenderAndTaskFragment extends Fragment implements View.OnClickLis
                     @Override
                     public void onClick(View v) {
 
+/*
 
                         AlertDialog.Builder dialogBuilder1 = new AlertDialog.Builder(getActivity());
                         dialogBuilder1.setTitle("Add Event");
@@ -230,7 +324,10 @@ public class CalenderAndTaskFragment extends Fragment implements View.OnClickLis
 
                         b = dialogBuilder1.create();
                         b.show();
+*/
 
+                        Intent intent = new Intent(getContext(), AddEventActivity.class);
+                        startActivity(intent);
                     }
                 });
 
@@ -303,13 +400,13 @@ public class CalenderAndTaskFragment extends Fragment implements View.OnClickLis
                                     eventModels.add(model);
 
                                     arraylistDate.add(jsonObject.getString("event_date"));
-                                    System.out.println("Datebdfdsf"+jsonObject.getString("event_date"));
+                                    System.out.println("Datebdfdsf" + jsonObject.getString("event_date"));
 
                                 }
 
                                 System.out.println("ModelSize" + eventModels.size());
                                 System.out.println("ArraySize" + arraylistDate.size());
-                                customCalendarView.setBackgroundColorOfRedOrGreenNew(arraylistDate, todayDate, "UnAvailable");
+                                customCalendarView.setBackgroundColorOfRedOrGreenNew(arraylistDate, date, "UnAvailable");
 
 
                                 //  getSelectedDateEvent(date);
@@ -552,6 +649,7 @@ public class CalenderAndTaskFragment extends Fragment implements View.OnClickLis
                                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int id) {
                                                 b.dismiss();
+                                                checkPermissions(callbackId, Manifest.permission.READ_CALENDAR, Manifest.permission.WRITE_CALENDAR);
                                             }
                                         });
                                 AlertDialog alert = builder.create();
@@ -606,7 +704,7 @@ public class CalenderAndTaskFragment extends Fragment implements View.OnClickLis
                     params.put(AppConstant.KEY_EVENT_DESCRIPTION, desc);
                     params.put(AppConstant.KEY_EVENT_ADDRESS, address);
 
-                    System.out.println("Event_Date" +date);
+                    System.out.println("Event_Date" + date);
                 } catch (Exception e) {
                     System.out.println("error" + e.toString());
                 }
@@ -643,6 +741,7 @@ public class CalenderAndTaskFragment extends Fragment implements View.OnClickLis
         return ret;
     }
 
+
     private boolean checkValidationForTask() {
 
         boolean ret = true;
@@ -659,6 +758,17 @@ public class CalenderAndTaskFragment extends Fragment implements View.OnClickLis
         return ret;
     }
 
+    private boolean checkValidationForEmail() {
+
+        boolean ret = true;
+        if (!Validations.hasText_input_layout(et_email, "Please Enter Email", input_email))
+            ret = false;
+
+        if (!Validations.isEmailAddress_input_layout(et_email, true, "Please Enter Valid Email ", input_email))
+            ret = false;
+
+        return ret;
+    }
 
     void datePicker_for_event_date(final TextView tv_event_date) {
 
@@ -684,16 +794,16 @@ public class CalenderAndTaskFragment extends Fragment implements View.OnClickLis
                         int day_month = monthOfYear + 1;
 
                         if (day_month < 10) {
-                          //  tv_event_date.setText("0" + day_month + "/" + day_date + "/" + year);//11-20-2017
-                            tv_event_date.setText(year+ "-"+ "0" + day_month+ "-" + day_date);//11-20-2017
+                            //  tv_event_date.setText("0" + day_month + "/" + day_date + "/" + year);//11-20-2017
+                            tv_event_date.setText(year + "-" + "0" + day_month + "-" + day_date);//11-20-2017
 
-                          //  2018-02-22
+                            //  2018-02-22
 
                             tv_event_date.setError(null);
                             Log.d("date12", tv_event_date.getText().toString());
                         } else {
-                           // tv_event_date.setText(day_month + "/" + day_date + "/" + year);//11-20-2017
-                            tv_event_date.setText(year+ "-"+ day_month+ "-" + day_date);//11-20-2017
+                            // tv_event_date.setText(day_month + "/" + day_date + "/" + year);//11-20-2017
+                            tv_event_date.setText(year + "-" + day_month + "-" + day_date);//11-20-2017
 
                             tv_event_date.setError(null);
                             Log.d("date12", tv_event_date.getText().toString());
@@ -715,21 +825,18 @@ public class CalenderAndTaskFragment extends Fragment implements View.OnClickLis
     private void getsaveData() {
         final SharedPreferences settings = getActivity().getSharedPreferences("AOP_PREFS", Context.MODE_PRIVATE); //1
         user_id = (settings.getString("user_id", ""));
+        userEmail = (settings.getString("email_address", ""));
     }
 
 
     public void getEventsList(ArrayList<EventModel> selected_Date_events) {
-        System.out.println("Evnt"+ selected_Date_events.size());
+        System.out.println("Evnt" + selected_Date_events.size());
 
 
+        if (selected_Date_events.size() == 0) {
+            Toast.makeText(getActivity(), "No Event", Toast.LENGTH_SHORT).show();
 
-        if(selected_Date_events.size()==0)
-        {
-            Toast.makeText(getActivity(),"No Event",Toast.LENGTH_SHORT).show();
-
-        }
-        else
-        {
+        } else {
             //Toast.makeText(getActivity(),"Acivity",Toast.LENGTH_SHORT).show();
 
             Intent intent2 = new Intent(getContext(), EventListActivity.class);
@@ -772,5 +879,224 @@ public class CalenderAndTaskFragment extends Fragment implements View.OnClickLis
 
     }
 
+    private void checkPermissions(int callbackId, String... permissionsId) {
+        boolean permissions = true;
+        for (String p : permissionsId) {
+            permissions = permissions && ContextCompat.checkSelfPermission(getContext(), p) == PERMISSION_GRANTED;
+           /* String event_name = et_event_name.getText().toString();
+            String desc = et_desc.getText().toString();
+            String address = et_address.getText().toString();
+            String date = tv_event_date.getText().toString();
+            addEventToGoogle(event_name,desc,address,date);*/
+        }
+
+        if (!permissions)
+            ActivityCompat.requestPermissions((Activity) getContext(), permissionsId, callbackId);
+    }
+
+    public void addEvent(final String event_name, final String desc, final String address, final String date) {
+        Dexter.withActivity(getActivity())
+                .withPermission(Manifest.permission.WRITE_CALENDAR)
+                .withListener(new PermissionListener() {
+                    @Override
+                    public void onPermissionGranted(PermissionGrantedResponse response) {
+                        try {
+
+                            int calenderId = -1;
+                            String calenderEmaillAddress = "priyanka.harmale@gmail.com";
+                            String[] projection = new String[]{
+                                    CalendarContract.Calendars._ID,
+                                    CalendarContract.Calendars.ACCOUNT_NAME};
+                            ContentResolver cr = getActivity().getContentResolver();
+                            Cursor cursor = cr.query(Uri.parse("content://com.android.calendar/calendars"), projection,
+                                    CalendarContract.Calendars.ACCOUNT_NAME + "=? and (" +
+                                            CalendarContract.Calendars.NAME + "=? or " +
+                                            CalendarContract.Calendars.CALENDAR_DISPLAY_NAME + "=?)",
+                                    new String[]{calenderEmaillAddress, calenderEmaillAddress,
+                                            calenderEmaillAddress}, null);
+
+                            if (cursor.moveToFirst()) {
+
+                                if (cursor.getString(1).equals(calenderEmaillAddress)) {
+
+                                    calenderId = cursor.getInt(0);
+                                }
+                            }
+                            String myDate = date + "00:00:00";
+                            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            Date date = formatter.parse(myDate);
+                            long start2 = date.getTime();
+                            long end2 = start2 + (24 * 60 * 60 * 1000); // For next 1hr
+                          /*  long start2 = android.icu.util.Calendar.getInstance().getTimeInMillis(); // 2011-02-12 12h00
+                            long end2 = android.icu.util.Calendar.getInstance().getTimeInMillis() + (4 * 60 * 60 * 1000); // 2011-02-12 13h00
+*/
+                            String title = event_name;
+
+                            ContentValues cvEvent = new ContentValues();
+                            cvEvent.put("calendar_id", calenderId);
+                            cvEvent.put(CalendarContract.Events.TITLE, title);
+
+                            cvEvent.put(CalendarContract.Events.DESCRIPTION, desc);
+                            cvEvent.put(CalendarContract.Events.EVENT_LOCATION, address);
+
+
+                            cvEvent.put("dtstart", start2);
+                            cvEvent.put("hasAlarm", 1);
+                            cvEvent.put("dtend", end2);
+
+                            cvEvent.put("eventTimezone", TimeZone.getDefault().getID());
+
+
+                            Uri uri = getActivity().getContentResolver().insert(Uri.parse("content://com.android.calendar/events"), cvEvent);
+
+
+                            // get the event ID that is the last element in the Uri
+
+                            long eventID = Long.parseLong(uri.getLastPathSegment());
+
+
+                            ContentValues values = new ContentValues();
+
+                            values.put(CalendarContract.Reminders.MINUTES, 2);
+                            values.put(CalendarContract.Reminders.EVENT_ID, eventID);
+                            values.put(CalendarContract.Reminders.METHOD, CalendarContract.Reminders.METHOD_ALARM);
+                            cr.insert(CalendarContract.Reminders.CONTENT_URI, values);
+                            //Uri uri = cr.insert(CalendarContract.Reminders.CONTENT_URI, values);
+
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onPermissionDenied(PermissionDeniedResponse response) {/* ... */}
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {/* ... */}
+                }).check();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        String event_name = et_event_name.getText().toString();
+        String desc = et_desc.getText().toString();
+        String address = et_address.getText().toString();
+        String date = tv_event_date.getText().toString();
+        addEvent(event_name, desc, address, date);
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+
+        if (requestCode == 0) { // Activity.RESULT_OK
+            Toast.makeText(getActivity(), "Mail Send", Toast.LENGTH_LONG).show();
+            b.dismiss();
+            inviteOther(et_email.getText().toString());
+        }
+
+    }
+
+
+    private void inviteOther(final String email) {
+        final ProgressDialog myDialog = Utils.DialogsUtils.showProgressDialog(getActivity(), getString(R.string.processing));
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, AppConstant.API_INVITE_OTHER,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        myDialog.dismiss();
+
+                        Log.d("add_uni", response);
+
+                        try {
+                            JSONObject j = new JSONObject(response);
+                            int message_code = j.getInt("message_code");
+                            String message = j.getString("message");
+
+
+                            if (message_code == 1) {
+                                message = j.getString("message");
+
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                builder.setMessage(message)
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                Intent i = new Intent(getActivity(), DashBoardActivity.class);
+                                                startActivity(i);
+
+                                            }
+                                        });
+                                AlertDialog alert = builder.create();
+                                alert.show();
+
+                            } else {
+                                message = j.getString("message");
+
+                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                                builder.setMessage(message)
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+
+
+                                            }
+                                        });
+                                AlertDialog alert = builder.create();
+                                alert.show();
+
+                            }
+                        } catch (JSONException e) {
+                            System.out.println("jsonexeption" + e.toString());
+                        }
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        myDialog.dismiss();
+
+                        //   Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                        String reason = AppUtils.getVolleyError(getActivity(), error);
+                        AlertUtility.showAlert(getActivity(), reason);
+                        System.out.println("jsonexeption" + error.toString());
+
+                    }
+                }) {
+
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                try {
+                    params.put(AppConstant.KEY_USERID, user_id);
+                    params.put("email_id", email);
+                } catch (Exception e) {
+                    System.out.println("error" + e.toString());
+                }
+                return params;
+            }
+
+        };
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(30000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        stringRequest.setShouldCache(false);
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
+    }
 
 }

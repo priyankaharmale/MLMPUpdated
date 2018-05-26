@@ -81,7 +81,7 @@
     <!--==========================NAvigation Drawer==========================-->
     <string name="digital_business_card">Digital Business Card</string>
     <string name="contacts">Contacts</string>
-    <string name="training_centre">Training centre</string>
+    <string name="training_centre">Training Center</string>
     <string name="calender_task">Calender &amp; Task </string>
     <string name="product_service">Product &amp; Services </string>
     <string name="donation">Donation </string>
@@ -146,7 +146,7 @@
 
 
     <!--training centre-->
-    <string name="the_training_centre">THE TRAINING CENTRE</string>
+    <string name="the_training_centre">THE TRAINING CENTER</string>
     <string name="black_belt_experience">BLACK BELT TRAINING EXPERIENCE</string>
     <string name="gps">GPS FOR</string>
     <string name="str_othrpgm">Other Program</string>

@@ -10,8 +10,11 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -24,6 +27,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,25 +42,22 @@ import hnwebproject.com.mlmp.Utility.Validations;
 
 public class GetYearActivity extends AppCompatActivity {
 
-    EditText et_year;
+    Spinner et_year;
     Button btn_next;
     String univercity, city;
     private String user_id;
+    String item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_year);
-
         getsaveData();
         initView();
-
-
     }
 
     private void initView() {
-
-        et_year = (EditText) findViewById(R.id.et_year);
+        et_year = (Spinner) findViewById(R.id.et_year);
         btn_next = (Button) findViewById(R.id.btn_next);
         Bundle bundle = getIntent().getExtras();
 
@@ -66,27 +68,31 @@ public class GetYearActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (checkValidation()) {
-                    if (Utils.isNetworkAvailable(GetYearActivity.this)) {
 
-                        saveCityYearUni(univercity, city, et_year.getText().toString(), user_id);
+                if (Utils.isNetworkAvailable(GetYearActivity.this)) {
+                    System.out.println("Yeardfgdf..." + item);
+                    saveCityYearUni(univercity, city, item, user_id);
 
-                    } else {
-                        Utils.myToast1(GetYearActivity.this);
-                    }
+                } else {
+                    Utils.myToast1(GetYearActivity.this);
                 }
-               /* Bundle bundle = new Bundle();
-                bundle.putString("year", et_year.getText().toString());
-                bundle.putString("Univercity", univercity);
-                bundle.putString("City", city);
-                i.putExtras(bundle);*/
 
+            }
+        });
+        setYearList();
+        et_year.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                item = (String) parent.getItemAtPosition(pos);
+                System.out.println("Year..." + item);
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
             }
         });
     }
 
 
-    private void saveCityYearUni(final String univercity, final String city, final String  year, final String user_id) {
+    private void saveCityYearUni(final String univercity, final String city, final String year, final String user_id) {
         final ProgressDialog myDialog = Utils.DialogsUtils.showProgressDialog(this, getString(R.string.processing));
         StringRequest stringRequest = new StringRequest(Request.Method.POST, AppConstant.API_UPDATE_CITY,
                 new Response.Listener<String>() {
@@ -188,14 +194,16 @@ public class GetYearActivity extends AppCompatActivity {
         user_id = (settings.getString("user_id", ""));
     }
 
-    private boolean checkValidation() {
 
-        boolean ret = true;
+    public void setYearList() {
+        ArrayList<String> years = new ArrayList<String>();
+        int thisYear = Calendar.getInstance().get(Calendar.YEAR);
+        for (int i = thisYear; i >= 1900; i--) {
+            years.add(Integer.toString(i));
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(GetYearActivity.this, android.R.layout.simple_spinner_item, years);
 
-        if (!Validations.hasText(et_year, "Please Enter Year"))
-            ret = false;
+        et_year.setAdapter(adapter);
 
-
-        return ret;
     }
 }
